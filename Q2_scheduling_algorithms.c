@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define a struct to represent a patient
 struct Patient {
     char name;
     int arrival_time;
@@ -10,7 +9,7 @@ struct Patient {
     int remaining_time; // Used for RR
 };
 
-// Function to calculate the average waiting time
+// we are writing a function to calculate the average waiting time 
 float calculateAverageWaitingTime(int waiting_time[], int num_patients) {
     int total_waiting_time = 0;
     for (int i = 0; i < num_patients; i++) {
@@ -19,7 +18,7 @@ float calculateAverageWaitingTime(int waiting_time[], int num_patients) {
     return (float)total_waiting_time / num_patients;
 }
 
-// Function to implement FCFS scheduling
+// Now lets work with FCFS scheduling
 void fcfsScheduling(struct Patient patients[], int num_patients) {
     int waiting_time[num_patients];
     waiting_time[0] = 0;
@@ -36,7 +35,7 @@ void fcfsScheduling(struct Patient patients[], int num_patients) {
     printf("\nAverage Waiting Time (FCFS): %.2f\n", calculateAverageWaitingTime(waiting_time, num_patients));
 }
 
-// Function to implement SJF scheduling
+// implmenting SJF scheduling right after fcfs
 void sjfScheduling(struct Patient patients[], int num_patients) {
     // Sort patients by treatment time (shortest treatment first)
     for (int i = 0; i < num_patients - 1; i++) {
@@ -64,7 +63,7 @@ void sjfScheduling(struct Patient patients[], int num_patients) {
     printf("\nAverage Waiting Time (SJF): %.2f\n", calculateAverageWaitingTime(waiting_time, num_patients));
 }
 
-// Function to implement Priority Scheduling (PS)
+// following sjf scheduling we move to Priority Scheduling (PS)
 void priorityScheduling(struct Patient patients[], int num_patients) {
     // Sort patients by urgency level (higher urgency first)
     for (int i = 0; i < num_patients - 1; i++) {
@@ -92,7 +91,7 @@ void priorityScheduling(struct Patient patients[], int num_patients) {
     printf("\nAverage Waiting Time (Priority): %.2f\n", calculateAverageWaitingTime(waiting_time, num_patients));
 }
 
-// Function to implement Round Robin (RR) Scheduling
+// Once ps scheduling is done we move on to Round Robin (RR) Scheduling
 void roundRobinScheduling(struct Patient patients[], int num_patients, int time_quantum) {
     int waiting_time[num_patients];
     int remaining_time[num_patients];
